@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-matte-bg: #050507;
+  --color-matte-surface: rgba(255, 255, 255, 0.045);
+  --color-matte-border: rgba(255, 255, 255, 0.09);
+  
+  --color-glow-primary: rgba(155, 92, 255, 0.15);
+  --color-glow-secondary: rgba(34, 230, 230, 0.1);
+  
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
+  --font-mono: var(--font-jetbrains);
+}
+
+@layer base {
+  body {
+    @apply bg-matte-bg text-neutral-200 antialiased selection:bg-white selection:text-black overflow-x-hidden font-sans;
+  }
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
